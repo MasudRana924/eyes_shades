@@ -44,11 +44,10 @@
 .join{
     font-size: 14px;
 }
-.input{
+.input-footer{
     border:none;
     outline-style: none;
- 
-
+    margin-left: -60px;
 }
 .input-btn{
     background-color: green;

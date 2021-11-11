@@ -17,7 +17,7 @@ const Footer = () => {
     return (
         <Container fluid className="mt-5 footer pb-5">
             <div>
-                <Row xs={3} md={3}>
+                <Row xs={1} md={3}>
                     <Col className="mt-1">
                         <p className="text-white text-start">Contact Us</p>
                         <p className="text-secondary text-start join">{map}  dhanmondhi 32,Dhaka,Bangladesh</p>
@@ -42,7 +42,7 @@ const Footer = () => {
                         <h4 className="text-start text-white">Join With Us</h4>
 
                         <p className="text-start text-secondary join">Get E-mail updates about our latest shop and special offers.</p>
-                        <input type="text" placeholder="Enter Email" className="input " />
+                        <input type="text" placeholder="Enter Email" className="input-footer " />
                         <input type="submit" value="Subscribed" className="input-btn "/>
                         
                          <br />

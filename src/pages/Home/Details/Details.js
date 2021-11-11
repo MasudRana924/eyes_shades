@@ -9,10 +9,11 @@ import './Details.css'
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../../Hooks/useAuth';
+import useProducts from './../../../Hooks/useProducts';
 
 
 const Details = () => {
-    const {user}=useAuth()
+    const { user } = useAuth()
     const cart = <FontAwesomeIcon icon={faShoppingCart} />
     const plus = <FontAwesomeIcon icon={faPlus} />
     const minus = <FontAwesomeIcon icon={faMinus} />
@@ -42,10 +43,10 @@ const Details = () => {
                 setGlasses(data)
             })
     }, [])
-    
+
     const onSubmit = data => {
-        const found=glasses.find(glas=>glas._id===glassId)
-        data.info=found
+        const found = glasses.find(glas => glas._id === glassId)
+        data.info = found
         fetch('http://localhost:5000/orders ', {
             method: 'POST',
             headers: {
@@ -56,13 +57,22 @@ const Details = () => {
             .then(res => res.json())
             .then(result => {
                 if (result) {
-                    alert('Orders placed Successfully')  
+                    alert('Orders placed Successfully')
                     reset()
 
                 }
             })
+            handleClose(true)
         reset()
     }
+    const [Glasses, SetGlasses] = useState([])
+    useEffect(() => {
+        fetch('http://localhost:5000/glasses')
+            .then(res => res.json())
+            .then(data => {
+                SetGlasses(data.slice(7, 13))
+            })
+    }, [])
     return (
         <Container fluid className="mt-5">
             <Row xs={1} md={3}>
@@ -131,7 +141,7 @@ const Details = () => {
                                                     <input type="submit" className="input-button" />
                                                 </form>
                                             </Modal.Body>
-                                          
+
                                         </Modal>
                                     </div>
 
@@ -148,6 +158,46 @@ const Details = () => {
                 </Col>
                 <Col md={2}></Col>
             </Row>
+
+            <div>
+
+      
+            <h2 className="text-start text-secondary mb-5">Latest Sunglasses </h2>
+            <Row xs={1} md={6}>
+                
+                {
+                    Glasses.map(g => <Col>
+                        <div className="card-style mb-5">
+
+
+                            <div className="price-rating">
+                                <p className="sale">{g.sale}% off</p>
+                                <p className="stock">{g.stock}</p>
+                            </div>
+                            <img src={g.img} className="image" alt="" />
+
+
+                            <div className="price-rating mt-1">
+
+                                <p className="name">{g.name}</p>
+                                <p className="price">${g.price}</p>
+                            </div>
+
+
+                            <div className="price-rating">
+                                <Link >
+                                    <Button variant="warning" size="sm">{cart} Checkout</Button>
+                                </Link>
+                                <p className="price">{g.star}/5</p>
+                            </div>
+
+
+                        </div>
+
+                    </Col>)
+                }
+            </Row>
+            </div>
 
         </Container>
     );
