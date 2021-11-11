@@ -76,7 +76,7 @@ const Header = () => {
                                 user.email ? <div className="me-1">
 
 
-                                    <Link to="/dashboard" className="me-1"> <Button variant="primary" size="sm">Dashboard</Button></Link>
+                                    <Link to="/orders" className="me-1"> <Button variant="primary" size="sm">Dashboard</Button></Link>
 
                                     <Button onClick={logOut} variant="warning" size="sm" >Logout</Button>
                                 </div> : <Link to="/login"><Button variant="warning" size="sm">Sign-in</Button></Link>

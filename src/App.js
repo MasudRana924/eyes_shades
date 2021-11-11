@@ -16,6 +16,9 @@ import PrivateRoute from './pages/Home/PrivateRoute/PrivateRoute';
 import Details from './pages/Home/Details/Details';
 import Explores from './pages/Home/Explores/Explores';
 import Dashboard from './pages/Home/Dashboard/Dashboard';
+import Review from './pages/Home/Dashboard/Review/Review';
+import MyOrders from './pages/Home/Dashboard/MyOrders/MyOrders';
+import Payment from './pages/Home/Dashboard/Payment/Payment';
 
 function App() {
   return (
@@ -38,8 +41,16 @@ function App() {
           </Route>
           <Route path="/explore">
             <Explores></Explores>
-           
           </Route>
+          <Route path="/review">
+           <Review></Review>
+          </Route>
+          <Route path="/payment">
+          <Payment></Payment>
+          </Route>
+          <PrivateRoute path="/orders">
+            <MyOrders></MyOrders>
+          </PrivateRoute>
           <PrivateRoute path="/details/:glassId">
            <Details></Details>
           </PrivateRoute>
