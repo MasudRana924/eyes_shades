@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { Col, Container, Modal, Row, Button } from 'react-bootstrap';
+import { Col, Container, Modal, Row, Button, Spinner } from 'react-bootstrap';
 import { useParams } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
@@ -9,7 +9,7 @@ import './Details.css'
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../../Hooks/useAuth';
-import useProducts from './../../../Hooks/useProducts';
+import Rating from 'react-rating';
 
 
 const Details = () => {
@@ -62,7 +62,7 @@ const Details = () => {
 
                 }
             })
-            handleClose(true)
+        handleClose(true)
         reset()
     }
     const [Glasses, SetGlasses] = useState([])
@@ -161,42 +161,48 @@ const Details = () => {
 
             <div>
 
-      
-            <h2 className="text-start text-secondary mb-5">Latest Sunglasses </h2>
-            <Row xs={1} md={6}>
-                
-                {
-                    Glasses.map(g => <Col>
-                        <div className="card-style mb-5">
+
+                <h2 className="text-start text-secondary mb-5">Latest Sunglasses </h2>
+
+                {Glasses.length === 0 ? < div className="spinner"> <Spinner animation="border" className="spinner" />
+                </div>
+                    :
+                    <Row xs={1} md={6}>
+
+                        {
+                            Glasses.map(g => <Col>
+                                <div className="card-style mb-5">
 
 
-                            <div className="price-rating">
-                                <p className="sale">{g.sale}% off</p>
-                                <p className="stock">{g.stock}</p>
-                            </div>
-                            <img src={g.img} className="image" alt="" />
+
+                                    <img src={g.img} className="image" alt="" />
 
 
-                            <div className="price-rating mt-1">
+                                    <div className="price-rating mt-1">
 
-                                <p className="name">{g.name}</p>
-                                <p className="price">${g.price}</p>
-                            </div>
-
-
-                            <div className="price-rating">
-                                <Link >
-                                    <Button variant="warning" size="sm">{cart} Checkout</Button>
-                                </Link>
-                                <p className="price">{g.star}/5</p>
-                            </div>
+                                        <p className="name">{g.name}</p>
+                                        <p className="price">${g.price}</p>
+                                    </div>
 
 
-                        </div>
+                                    <div className="price-rating">
+                                        <Link >
+                                            <Button variant="warning" size="sm">{cart} Checkout</Button>
+                                        </Link>
+                                        <Rating
+                                            initialRating={g.star}
+                                            emptySymbol="far fa-star rating"
+                                            fullSymbol="fas fa-star rating"
+                                            readonly ></Rating>
+                                    </div>
 
-                    </Col>)
+
+                                </div>
+
+                            </Col>)
+                        }
+                    </Row>
                 }
-            </Row>
             </div>
 
         </Container>

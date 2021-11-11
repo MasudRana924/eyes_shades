@@ -54,7 +54,9 @@ const Header = () => {
                             <Link to="/contact" className="link ms-3">CONTACT</Link>
 
                         </Nav>
+                        <Link to="/explore" className="link">
                         <span className="me-3 ms-1 icon">{bomb} Explore</span>
+                        </Link>
                         <input type="text" className="search me-1" placeholder="search" />
                         <span className="me-1 ms-1 icon">{heart}</span>
                         <button className="cart-button" >
@@ -66,7 +68,7 @@ const Header = () => {
                         <Navbar.Text>
 
                             {
-                                user.email && <span className="text-dark fs-6 me-1">Welcome , <span className="text-danger">{user.displayName}</span></span>
+                                user.email && <span className="text-dark  name me-1">Welcome , <span className="text-dark">{user.displayName}</span></span>
                             }
                             <br />
 
@@ -74,7 +76,7 @@ const Header = () => {
                                 user.email ? <div className="me-1">
 
 
-                                    <Link to="/orders" className="me-1"> <Button variant="primary" size="sm">Dashboard</Button></Link>
+                                    <Link to="/dashboard" className="me-1"> <Button variant="primary" size="sm">Dashboard</Button></Link>
 
                                     <Button onClick={logOut} variant="warning" size="sm" >Logout</Button>
                                 </div> : <Link to="/login"><Button variant="warning" size="sm">Sign-in</Button></Link>

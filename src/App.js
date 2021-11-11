@@ -14,6 +14,8 @@ import NotFound from './pages/NotFound/NotFound';
 import AuthProvider from './Context/AuthProvider'
 import PrivateRoute from './pages/Home/PrivateRoute/PrivateRoute';
 import Details from './pages/Home/Details/Details';
+import Explores from './pages/Home/Explores/Explores';
+import Dashboard from './pages/Home/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -34,8 +36,15 @@ function App() {
           <Route path="/signup">
             <SignUp></SignUp>
           </Route>
+          <Route path="/explore">
+            <Explores></Explores>
+           
+          </Route>
           <PrivateRoute path="/details/:glassId">
            <Details></Details>
+          </PrivateRoute>
+          <PrivateRoute path="/dashboard">
+           <Dashboard></Dashboard>
           </PrivateRoute>
           <Route path="*">
            <NotFound></NotFound>

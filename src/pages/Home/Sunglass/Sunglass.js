@@ -3,6 +3,7 @@ import { Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import Rating from 'react-rating';
 import './Sunglass.css'
 
 const Sunglass = (props) => {
@@ -31,7 +32,14 @@ const Sunglass = (props) => {
                     <Link to={`/details/${_id}`}>
                         <Button variant="warning" size="sm">{cart} Purchase</Button>
                     </Link>
-                    <p className="price">{star}/5</p>
+                    {/* <p className="price">{star}/5</p> */}
+                    <Rating
+                    initialRating={star}
+                    emptySymbol="far fa-star rating"
+                    fullSymbol="fas fa-star rating"
+                    readonly ></Rating>
+                 
+                    
                 </div>
 
 
