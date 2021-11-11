@@ -6,7 +6,7 @@ import './Sunglasses.css'
 const Sunglasses = () => {
     const [glasses,setGlasses]=useState([])
     useEffect(()=>{
-        fetch('./glass.json')
+        fetch('http://localhost:5000/glasses')
         .then(res=>res.json())
         .then(data=>{
             setGlasses(data.slice(0,6))

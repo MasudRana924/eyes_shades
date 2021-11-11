@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 import { Container, Nav, Navbar, Button, Row, Col, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeadphones, faShoppingCart, faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faHeadphones, faShoppingCart, faHeart ,faBomb} from '@fortawesome/free-solid-svg-icons'
 import './Header.css'
+import useAuth from './../../../Hooks/useAuth';
 
 const Header = () => {
-   const [user,logOut]=useState([])
+   const {user,logOut}=useAuth()
     const element = <FontAwesomeIcon icon={faHeadphones} />
     const Shoppingcart = <FontAwesomeIcon icon={faShoppingCart} />
     const heart = <FontAwesomeIcon icon={faHeart} />
+    const bomb = <FontAwesomeIcon icon={faBomb} />
     
     return (
         <Container fluid>
@@ -52,6 +54,7 @@ const Header = () => {
                             <Link to="/contact" className="link ms-3">CONTACT</Link>
 
                         </Nav>
+                        <span className="me-3 ms-1 icon">{bomb} Explore</span>
                         <input type="text" className="search me-1" placeholder="search" />
                         <span className="me-1 ms-1 icon">{heart}</span>
                         <button className="cart-button" >
@@ -71,7 +74,7 @@ const Header = () => {
                                 user.email ? <div className="me-1">
 
 
-                                    <Link to="/orders" className="me-1"> <Button variant="success" size="sm">Dashboard</Button></Link>
+                                    <Link to="/orders" className="me-1"> <Button variant="primary" size="sm">Dashboard</Button></Link>
 
                                     <Button onClick={logOut} variant="warning" size="sm" >Logout</Button>
                                 </div> : <Link to="/login"><Button variant="warning" size="sm">Sign-in</Button></Link>

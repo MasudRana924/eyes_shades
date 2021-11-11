@@ -8,7 +8,7 @@
 .link{
     text-decoration: none;
     color:black;
-    font-weight: bold;
+   
 }
 .search{
     text-align: center;
@@ -16,9 +16,7 @@
     border:1px solid white;
     border-bottom:1px solid gold;
 }
-.icon{
-    font-weight:bolder;
-}
+
 .button{
     height:30px;
    
@@ -33,7 +31,6 @@
     margin-left: -30px;
     text-decoration: none;
      font-weight: 700;
-     color: black ;
-     
+     color: black ;   
    
 }

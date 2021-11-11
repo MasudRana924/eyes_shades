@@ -6,7 +6,7 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import './Sunglass.css'
 
 const Sunglass = (props) => {
-    const { name, img, price, star,sale,stock} = props.glass
+    const {_id, name, img, price, star,sale,stock} = props.glass
     const cart = <FontAwesomeIcon icon={faShoppingCart} />
     return (
         <Col className="mt-5">
@@ -28,7 +28,7 @@ const Sunglass = (props) => {
 
 
                 <div className="price-rating">
-                    <Link>
+                    <Link to={`/details/${_id}`}>
                         <Button variant="warning" size="sm">{cart} Purchase</Button>
                     </Link>
                     <p className="price">{star}/5</p>
