@@ -14,6 +14,7 @@ import Review from './Review/Review';
 import Payment from './Payment/Payment';
 import useAuth from '../../../Hooks/useAuth';
 import MakeAdmin from './MakeAdmin/MakeAdmin';
+import AdminRoute from './AdminRoute/AdminRoute';
 const Dashboard = () => {
     const { admin, logOut } = useAuth()
     let { path, url } = useRouteMatch();
@@ -23,7 +24,6 @@ const Dashboard = () => {
                 <Col xs={12} md={4} className="admin-panel">
 
                     <h2 className="text-primary dashboard">DashBoard</h2>
-
                     <Link to={`${url}/myorders`} className="text-decoration-none">
                         <h6 className="text-start">My Orders</h6>
                     </Link>
@@ -34,12 +34,22 @@ const Dashboard = () => {
                         <h6 className="text-start">Payment</h6>
                     </Link>
                     {
-                        admin && <div>
+                        admin &&  <div>
+                            <Link to={`${url}/addproduct`} className="text-decoration-none">
+                                <h6 className="text-start">Add Product</h6>
+                            </Link>
+                            <Link to={`${url}/manageproduct`} className="text-decoration-none">
+                                <h6 className="text-start">Manage Products</h6>
+                            </Link>
+                            <Link to={`${url}/manageorders`} className="text-decoration-none">
+                                <h6 className="text-start">Manage Orders</h6>
+                            </Link>
                             <Link to={`${url}/makeadmin`} className="text-decoration-none">
                                 <h6 className="text-start">Make Admin</h6>
                             </Link>
 
                         </div>
+                    
                     }
 
                     <Link className="text-decoration-none">
@@ -63,9 +73,9 @@ const Dashboard = () => {
                         <Route path={`${path}/payment`}>
                             <Payment></Payment>
                         </Route>
-                        <Route path={`${path}/makeadmin`}>
+                        <AdminRoute path={`${path}/makeadmin`}>
                             <MakeAdmin></MakeAdmin>
-                        </Route>
+                        </AdminRoute>
 
 
                     </Switch>
