@@ -21,12 +21,12 @@ const MakeAdmin = () => {
         .then(res=>res.json())
         .then(data=>{
             if(data.modifiedCount){
-                alert('already admin')
+                alert('Successfully added')
                 setEmail('')
                 setSuccess(true)
             }
             else{
-                alert('Successfully added')
+                alert('Already Admin')
                
             }
             

@@ -5,6 +5,7 @@ initializeAuthentication()
 const useFirebase = () => {
     const [user, setUser] = useState({})
     const [isLoading, setLoading] = useState(true)
+    const [admin, setAdmin] = useState(false)
        // for name
        const [name, setName] = useState('')
        // for email
@@ -72,6 +73,14 @@ const useFirebase = () => {
         return unsubscribed
 
     }, [])
+    useEffect(() => {
+        fetch(`http://localhost:5000/users/${user.email}`)
+        .then(res=>res.json())
+        .then(data=>{
+            setAdmin(data.admin)
+        })
+
+    }, [user.email])
     const logOut = () => {
         setLoading(true)
 
@@ -87,7 +96,7 @@ const useFirebase = () => {
 
     return {
         user, registerUser, logInUser, logOut,isLoading,
-        setError,error, handleEmail, handlePass,handleName,setUserName, email, pass,setUser,name
+        setError,error, handleEmail, handlePass,handleName,setUserName, email, pass,setUser,name,admin
     }
 }
 export default useFirebase
