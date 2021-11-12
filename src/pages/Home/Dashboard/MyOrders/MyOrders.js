@@ -4,9 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import useAuth from '../../../../Hooks/useAuth';
 import './MyOrders.css'
-import { Link } from 'react-router-dom';
 const MyOrders = () => {
-    const { user, logOut } = useAuth()
+    const { user } = useAuth()
     const [orders, setOrders] = useState([])
     useEffect(() => {
         const url = `http://localhost:5000/myorders?email=${user.email}`

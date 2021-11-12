@@ -15,6 +15,10 @@ import Payment from './Payment/Payment';
 import useAuth from '../../../Hooks/useAuth';
 import MakeAdmin from './MakeAdmin/MakeAdmin';
 import AdminRoute from './AdminRoute/AdminRoute';
+import AddProducts from './AddProducts/AddProducts';
+import ManageOrders from './ManageOrders/ManageOrders';
+import ManageProducts from './ManageProducts/ManageProducts';
+import UpdateProduct from './UpdateProduct/UpdateProduct';
 const Dashboard = () => {
     const { admin, logOut } = useAuth()
     let { path, url } = useRouteMatch();
@@ -76,8 +80,19 @@ const Dashboard = () => {
                         <AdminRoute path={`${path}/makeadmin`}>
                             <MakeAdmin></MakeAdmin>
                         </AdminRoute>
-
-
+                        <AdminRoute path={`${path}/addproduct`}>
+                           <AddProducts></AddProducts>
+                        </AdminRoute>
+                        <AdminRoute path={`${path}/manageorders`}>
+                          <ManageOrders></ManageOrders>
+                        </AdminRoute>
+                        <AdminRoute path={`${path}/manageproduct`}>
+                         <ManageProducts></ManageProducts>
+                        </AdminRoute>
+                        <AdminRoute path={`${path}/:glassId`}>
+                         <UpdateProduct></UpdateProduct>
+                        </AdminRoute>
+                       
                     </Switch>
 
 

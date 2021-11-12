@@ -96,7 +96,7 @@ const useFirebase = () => {
 
     return {
         user, registerUser, logInUser, logOut,isLoading,
-        setError,error, handleEmail, handlePass,handleName,setUserName, email, pass,setUser,name,admin
+        setError,error, handleEmail, handlePass,handleName,setUserName, email, pass,setUser,name,admin,setLoading
     }
 }
 export default useFirebase
