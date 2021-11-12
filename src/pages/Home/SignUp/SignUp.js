@@ -12,8 +12,18 @@ const SignUp = () => {
     const location_url = location.state?.from || '/home'
     const history = useHistory()
 
-    const { registerUser, error, handleName,handleEmail, handlePass, setUserName, email, pass, setError, setLoading } = useAuth()
+    const { registerUser, error, handleName,handleEmail, handlePass, setUserName,setUser,name, email, pass, setError, setLoading } = useAuth()
 
+    // user save in database 
+    const saveUser=(email,diaplayName)=>{
+        const user = { email, diaplayName}
+        fetch('http://localhost:5000/users', {
+            method:'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(user)
+
+        })
+    }
     const google = <FontAwesomeIcon icon={faGoogle} />
     return (
         <Container fluid className="mt-5 pt-5 pb-5 ">
@@ -31,8 +41,11 @@ const SignUp = () => {
                                 .then(result => {
                                     history.push(location_url)
                                     setError('')
+                                    const newUser={email,displayName:name}
+                                    setUser(newUser)
+                                    saveUser(email,name)
                                     setUserName()
-                                    window.location.reload()
+                                  
 
 
                                 })

@@ -42,15 +42,6 @@ function App() {
           <Route path="/explore">
             <Explores></Explores>
           </Route>
-          <Route path="/review">
-           <Review></Review>
-          </Route>
-          <Route path="/payment">
-          <Payment></Payment>
-          </Route>
-          <PrivateRoute path="/orders">
-            <MyOrders></MyOrders>
-          </PrivateRoute>
           <PrivateRoute path="/details/:glassId">
            <Details></Details>
           </PrivateRoute>

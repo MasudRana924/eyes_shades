@@ -5,10 +5,10 @@ import useAuth from './../../../../Hooks/useAuth';
 const Review = () => {
     const {logOut}=useAuth()
     return (
-        <Container fluid className="mt-5 pt-5 pb-5">
-            <Row xs={1} md={2}>
+        <Container fluid className="">
+            <Row xs={1} md={1}>
 
-                <Col xs={12} md={4} className="admin-panel">
+                {/* <Col xs={12} md={4} className="admin-panel">
                     <h2 className="text-primary dashboard">DashBoard</h2>
 
                     <Link to="/orders" className="text-decoration-none">
@@ -24,7 +24,7 @@ const Review = () => {
                     <h6 className="text-start" onClick={logOut}>LogOut</h6>
                     </Link>
 
-                </Col>
+                </Col> */}
 
                 <Col xs={12} md={8}>
                     <h2 className=" text-start dashboard" >Review</h2>
