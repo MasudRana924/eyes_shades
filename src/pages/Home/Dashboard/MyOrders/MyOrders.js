@@ -7,6 +7,7 @@ import './MyOrders.css'
 const MyOrders = () => {
     const { user } = useAuth()
     const [orders, setOrders] = useState([])
+    
     useEffect(() => {
         const url = `http://localhost:5000/myorders?email=${user.email}`
         fetch(url)
@@ -15,6 +16,23 @@ const MyOrders = () => {
                 setOrders(data)
             })
     }, [])
+    const handleDelete = id => {
+        const proceed = window.confirm('Are you sure that you want to delete')
+        if (proceed) {
+            const url = `http://localhost:5000/myorders/${id}`
+            fetch(url, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        alert('user delete successfully ')
+                        const remaining = orders.filter(order =>order._id !== id)
+                        setOrders(remaining)
+                    }
+                })
+        }
+    }
     return (
         <Container fluid className="">
 
@@ -39,7 +57,7 @@ const MyOrders = () => {
                                         <td>{order.info.name}</td>
                                         <td>${order.info.price}</td>
                                         <td>
-                                            <button className="delete-button">
+                                            <button onClick={() => handleDelete(order._id)}className="delete-button">
                                                 <FontAwesomeIcon icon={faTrashAlt} className="fs-3 text-danger " />
                                             </button>
                                         </td>
