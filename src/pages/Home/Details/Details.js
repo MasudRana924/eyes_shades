@@ -47,6 +47,7 @@ const Details = () => {
     const onSubmit = data => {
         const found = glasses.find(glas => glas._id === glassId)
         data.info = found
+        data.status='pending'
         fetch('http://localhost:5000/orders ', {
             method: 'POST',
             headers: {

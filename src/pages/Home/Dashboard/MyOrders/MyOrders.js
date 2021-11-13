@@ -33,6 +33,7 @@ const MyOrders = () => {
                 })
         }
     }
+    
     return (
         <Container fluid className="">
 
@@ -46,6 +47,7 @@ const MyOrders = () => {
 
                                 <th>Name</th>
                                 <th>Price</th>
+                                <th>Status</th>
                                 <th>Delete</th>
                             </tr>
 
@@ -56,6 +58,11 @@ const MyOrders = () => {
                                     <tr className="">
                                         <td>{order.info.name}</td>
                                         <td>${order.info.price}</td>
+                                        {
+                                            order.status==='Approved'? <td className="text-success" >{order.status}</td> 
+                                            :<td className="text-danger" >{order.status}</td>
+                                            
+                                        }
                                         <td>
                                             <button onClick={() => handleDelete(order._id)}className="delete-button">
                                                 <FontAwesomeIcon icon={faTrashAlt} className="fs-3 text-danger " />

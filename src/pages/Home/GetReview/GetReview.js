@@ -10,7 +10,7 @@ const GetReview = (props) => {
         <Col className="mt-5">
             <div className="card-style">
 
-                <img src={user.img} className="image" alt="" />
+                <img src={user.src} className="image" alt="" />
                 <Rating
                     initialRating={rating}
                     emptySymbol="far fa-star rating"
@@ -18,7 +18,7 @@ const GetReview = (props) => {
                     readonly ></Rating>
                 <p className="name text-center">{name}</p>
                 
-                <p className="price text-start">{review}</p>
+                <p className=" text-start" style={{fontSize:'15px'}}>{review}</p>
 
 
 
