@@ -26,7 +26,7 @@ const MyOrders = () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {
-                        alert('user delete successfully ')
+                        alert('My orders delete successfully ')
                         const remaining = orders.filter(order =>order._id !== id)
                         setOrders(remaining)
                     }
@@ -38,7 +38,7 @@ const MyOrders = () => {
 
             <Row xs={1} md={1}>
 
-                <Col xs={12} md={8}>
+                <Col xs={12} md={12}>
                     <h2 className="text-start dashboard">Orders-list</h2>
                     <Table striped bordered hover variant="white">
                         <thead>

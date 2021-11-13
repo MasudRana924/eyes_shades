@@ -18,6 +18,23 @@ const ManageProducts = () => {
                 setPageCount(pageNumber)
             })
     }, [page])
+    const handleDelete = id => {
+        const proceed = window.confirm('Are you sure that you want to delete')
+        // if (proceed) {
+        //     const url = `http://localhost:5000/glasses/${id}`
+        //     fetch(url, {
+        //         method: 'DELETE'
+        //     })
+        //         .then(res => res.json())
+        //         .then(data => {
+        //             if (data.deletedCount > 0) {
+        //                 alert('Product delete successfully')
+        //                 const remaining = products.filter(product =>product._id !== id)
+        //                 setProducts(remaining)
+        //             }
+        //         })
+        // }
+    }
     return (
         <Container fluid className="">
               <h2 className="text-start dashboard">Manage Products </h2>
@@ -28,6 +45,7 @@ const ManageProducts = () => {
                     {
                         products.map(glass => <ManageProduct
                           glass={glass}
+                          handleDelete={handleDelete}
                         ></ManageProduct>)
                     }
 

@@ -21,7 +21,7 @@ const AddProducts = () => {
         const desc = descRef.current.value
         const sale = saleRef.current.value
         const product = { key, cost, name, img, rating, sale, desc, stock }
-        fetch('', {
+        fetch('http://localhost:5000/glasses', {
             method: 'post',
             headers: {
                 'content-type': 'application/json'

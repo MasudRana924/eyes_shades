@@ -7,19 +7,35 @@ const ManageOrders = () => {
 
     const [orders, setOrders] = useState([])
     useEffect(() => {
-        const url = ``
-        fetch(url)
+        fetch('http://localhost:5000/getorders')
             .then(res => res.json())
             .then(data => {
                 setOrders(data)
             })
     }, [])
+    const handleDelete = id => {
+        const proceed = window.confirm('Are you sure that you want to delete')
+        if (proceed) {
+            const url = `http://localhost:5000/myorders/${id}`
+            fetch(url, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        alert('Orders delete successfully ')
+                        const remaining = orders.filter(order =>order._id !== id)
+                        setOrders(remaining)
+                    }
+                })
+        }
+    }
     return (
         <Container fluid className="">
 
         <Row xs={1} md={1}>
 
-            <Col xs={12} md={8}>
+            <Col xs={12} md={12}>
                 <h2 className="text-start dashboard">Manage Orders</h2>
                 <Table striped bordered hover variant="white">
                     <thead>
@@ -43,7 +59,7 @@ const ManageOrders = () => {
                                     <td>${order.info.name}</td>
                                     <td>${order.info.price}</td>
                                     <td>
-                                        <button className="delete-button">
+                                        <button onClick={() => handleDelete(order._id)} className="delete-button">
                                             <FontAwesomeIcon icon={faTrashAlt} className="fs-3 text-danger " />
                                         </button>
                                     </td>
