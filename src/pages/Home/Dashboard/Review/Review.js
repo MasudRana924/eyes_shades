@@ -1,45 +1,56 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Col, Container, Form, Row, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import useAuth from './../../../../Hooks/useAuth';
+
 const Review = () => {
-    const {logOut}=useAuth()
+    const nameRef = useRef()
+    const ratingRef = useRef()
+    const reviewRef = useRef()
+    const handleAddPlace = (e) => {
+        const name = nameRef.current.value
+        const rating = ratingRef.current.value
+        const review = reviewRef.current.value
+
+        const reviews= {name,rating, review }
+        fetch('http://localhost:5000/reviews', {
+            method: 'post',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(reviews)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    alert('Review added succesfully')
+                    e.target.reset()
+                }
+            })
+        e.preventDefault()
+    }
     return (
         <Container fluid className="">
             <Row xs={1} md={1}>
 
-                {/* <Col xs={12} md={4} className="admin-panel">
-                    <h2 className="text-primary dashboard">DashBoard</h2>
-
-                    <Link to="/orders" className="text-decoration-none">
-                        <h6 className="text-start">My Orders</h6>
-                    </Link>
-                    <Link to="/review"className="text-decoration-none">
-                        <h6 className="text-start">Review</h6>
-                    </Link>
-                    <Link to="/payment" className="text-decoration-none">
-                        <h6 className="text-start">Payment</h6>
-                    </Link>
-                    <Link className="text-decoration-none">
-                    <h6 className="text-start" onClick={logOut}>LogOut</h6>
-                    </Link>
-
-                </Col> */}
+                
 
                 <Col xs={12} md={8}>
                     <h2 className=" text-start dashboard" >Review</h2>
                     <Row xs={1} md={2}>
                         <Col>
                             <div className="review-card ">
-                                <Form>
+                                <Form onSubmit={handleAddPlace}>
                                     <Form.Group className="mb-3 text-start" >
                                         <Form.Label>Your name</Form.Label>
-                                        <Form.Control type="name" placeholder="Enter name" />
+                                        <Form.Control ref={nameRef}  type="name" placeholder="Enter name" />
 
+                                    </Form.Group>
+                                    <Form.Group as={Col} className="mb-3 text-start">
+                                        <Form.Label>Give Rating</Form.Label>
+                                        <Form.Control ref={ratingRef} type="number" placeholder="Give rating" />
                                     </Form.Group>
                                     <Form.Group className="mb-3 text-start" controlId="exampleForm.ControlTextarea1">
                                         <Form.Label>Your Feedback</Form.Label>
-                                        <Form.Control as="textarea" rows={3} />
+                                        <Form.Control ref={reviewRef}  as="textarea" rows={3} />
                                     </Form.Group>
 
 
