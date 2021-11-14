@@ -5,7 +5,7 @@ import GetReview from '../GetReview/GetReview';
 const GetReviews = () => {
     const [reviews,setReviews]=useState([])
     useEffect(()=>{
-        fetch('http://localhost:5000/getreviews')
+        fetch('https://fierce-wildwood-12311.herokuapp.com/getreviews')
         .then(res=>res.json())
         .then(data=>{
             setReviews(data.slice(0,6))

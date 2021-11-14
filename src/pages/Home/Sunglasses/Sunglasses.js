@@ -6,7 +6,7 @@ import './Sunglasses.css'
 const Sunglasses = () => {
     const [glasses,setGlasses]=useState([])
     useEffect(()=>{
-        fetch('http://localhost:5000/glasses')
+        fetch('https://fierce-wildwood-12311.herokuapp.com/glasses')
         .then(res=>res.json())
         .then(data=>{
             setGlasses(data.slice(0,6))

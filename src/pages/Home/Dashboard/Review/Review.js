@@ -11,7 +11,7 @@ const Review = () => {
         const review = reviewRef.current.value
 
         const reviews= {name,rating, review }
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://fierce-wildwood-12311.herokuapp.com/reviews', {
             method: 'post',
             headers: {
                 'content-type': 'application/json'

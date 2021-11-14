@@ -9,7 +9,7 @@ const MyOrders = () => {
     const [orders, setOrders] = useState([])
     
     useEffect(() => {
-        const url = `http://localhost:5000/myorders?email=${user.email}`
+        const url = `https://fierce-wildwood-12311.herokuapp.com/myorders?email=${user.email}`
         fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -19,7 +19,7 @@ const MyOrders = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure that you want to delete')
         if (proceed) {
-            const url = `http://localhost:5000/myorders/${id}`
+            const url = `https://fierce-wildwood-12311.herokuapp.com/myorders/${id}`
             fetch(url, {
                 method: 'DELETE'
             })

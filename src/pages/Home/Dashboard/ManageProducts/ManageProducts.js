@@ -9,7 +9,7 @@ const ManageProducts = () => {
     const [page, setPage] = useState(0)
     const size = 9
     useEffect(() => {
-        fetch(`http://localhost:5000/products?page=${page}&&size=${size}`)
+        fetch(`https://fierce-wildwood-12311.herokuapp.com/products?page=${page}&&size=${size}`)
             .then(res => res.json())
             .then(data => {
                 setProducts(data.products)
@@ -20,20 +20,20 @@ const ManageProducts = () => {
     }, [page])
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure that you want to delete')
-        // if (proceed) {
-        //     const url = `http://localhost:5000/glasses/${id}`
-        //     fetch(url, {
-        //         method: 'DELETE'
-        //     })
-        //         .then(res => res.json())
-        //         .then(data => {
-        //             if (data.deletedCount > 0) {
-        //                 alert('Product delete successfully')
-        //                 const remaining = products.filter(product =>product._id !== id)
-        //                 setProducts(remaining)
-        //             }
-        //         })
-        // }
+        if (proceed) {
+            const url = `https://fierce-wildwood-12311.herokuapp.com/glasses/${id}`
+            fetch(url, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        alert('Product delete successfully')
+                        const remaining = products.filter(product =>product._id !== id)
+                        setProducts(remaining)
+                    }
+                })
+        }
     }
     return (
         <Container fluid className="">

@@ -8,7 +8,7 @@ const Explores = () => {
     const [page, setPage] = useState(0)
     const size = 9
     useEffect(() => {
-        fetch(`http://localhost:5000/products?page=${page}&&size=${size}`)
+        fetch(`https://fierce-wildwood-12311.herokuapp.com/products?page=${page}&&size=${size}`)
             .then(res => res.json())
             .then(data => {
                 setProducts(data.products)

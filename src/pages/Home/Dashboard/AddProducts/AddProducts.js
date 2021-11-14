@@ -21,7 +21,7 @@ const AddProducts = () => {
         const desc = descRef.current.value
         const sale = saleRef.current.value
         const product = { key, cost, name, img, rating, sale, desc, stock }
-        fetch('http://localhost:5000/glasses', {
+        fetch('https://fierce-wildwood-12311.herokuapp.com/glasses', {
             method: 'post',
             headers: {
                 'content-type': 'application/json'

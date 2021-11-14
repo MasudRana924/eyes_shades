@@ -7,7 +7,7 @@ const ManageOrders = () => {
 
     const [orders, setOrders] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/getorders')
+        fetch('https://fierce-wildwood-12311.herokuapp.com/getorders')
             .then(res => res.json())
             .then(data => {
                 setOrders(data)
@@ -16,7 +16,7 @@ const ManageOrders = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure that you want to delete')
         if (proceed) {
-            const url = `http://localhost:5000/myorders/${id}`
+            const url = `https://fierce-wildwood-12311.herokuapp.com/myorders/${id}`
             fetch(url, {
                 method: 'DELETE'
             })
@@ -33,7 +33,7 @@ const ManageOrders = () => {
     const handleUpdate = id => {
         const proceed = window.confirm('Are you sure that you want to update status')
         if (proceed) {
-            const url = `http://localhost:5000/updateorders/${id}`
+            const url = `https://fierce-wildwood-12311.herokuapp.com/updateorders/${id}`
             fetch(url, {
                 method: 'PUT',
                 headers: {
@@ -45,6 +45,7 @@ const ManageOrders = () => {
                 .then(data => {
                     if (data.modifiedCount > 0) {
                         // alert('Orders update successfully ')
+                      
                         alert('Updated Successful')
                         
                     }

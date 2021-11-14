@@ -28,7 +28,7 @@ const Details = () => {
     //  shipping 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     useEffect(() => {
-        fetch(`http://localhost:5000/glass/${glassId}`)
+        fetch(`https://fierce-wildwood-12311.herokuapp.com/glass/${glassId}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data)
@@ -36,7 +36,7 @@ const Details = () => {
             })
     }, [])
     useEffect(() => {
-        fetch('http://localhost:5000/glasses')
+        fetch('https://fierce-wildwood-12311.herokuapp.com/glasses')
             .then(res => res.json())
             .then(data => {
                 console.log(data)
@@ -48,7 +48,7 @@ const Details = () => {
         const found = glasses.find(glas => glas._id === glassId)
         data.info = found
         data.status='pending'
-        fetch('http://localhost:5000/orders ', {
+        fetch('https://fierce-wildwood-12311.herokuapp.com/orders ', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -68,7 +68,7 @@ const Details = () => {
     }
     const [Glasses, SetGlasses] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/glasses')
+        fetch('https://fierce-wildwood-12311.herokuapp.com/glasses')
             .then(res => res.json())
             .then(data => {
                 SetGlasses(data.slice(7, 13))

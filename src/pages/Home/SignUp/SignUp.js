@@ -17,7 +17,7 @@ const SignUp = () => {
     // user save in database 
     const saveUser=(email,diaplayName)=>{
         const user = { email, diaplayName}
-        fetch('http://localhost:5000/users', {
+        fetch('https://fierce-wildwood-12311.herokuapp.com/users', {
             method:'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(user)

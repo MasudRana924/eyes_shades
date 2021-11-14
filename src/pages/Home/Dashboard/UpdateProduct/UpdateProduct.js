@@ -6,7 +6,7 @@ const UpdateProduct = () => {
     const { glassId } = useParams()
     const [glass, setGlass] = useState({})
     useEffect(() => {
-        fetch(`http://localhost:5000/glass/${glassId}`)
+        fetch(`https://fierce-wildwood-12311.herokuapp.com/glass/${glassId}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data)
@@ -21,17 +21,18 @@ const UpdateProduct = () => {
     const descRef = useRef()
     const stockRef = useRef()
 
-    const handleAddPlace = (e) => {
+    const handleUpdate = (e) => {
         const name = nameRef.current.value
-        const cost = priceRef.current.value
+        const price = priceRef.current.value
         const img = imgRef.current.value
-        const rating = ratingRef.current.value
+        const star =ratingRef.current.value
         const stock = stockRef.current.value
         const desc = descRef.current.value
         const sale = saleRef.current.value
-        const product = {cost, name, img, rating, sale, desc, stock }
-        fetch('', {
-            method: 'post',
+        const product = {price, name, img, star, sale, desc, stock }
+        const url = `https://fierce-wildwood-12311.herokuapp.com/updateproduct/${glassId}`
+        fetch(url, {
+            method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
@@ -39,13 +40,15 @@ const UpdateProduct = () => {
         })
             .then(res => res.json())
             .then(data => {
-                if (data.insertedId) {
+                if (data.modifiedCount>0) {
                     alert('Product update succesfully')
+                     setGlass(product)
                     e.target.reset()
                 }
             })
         e.preventDefault()
     }
+
 return (
     <Container>
         <h2 className="text-start dashboard">Update Product</h2>
@@ -108,7 +111,7 @@ return (
 
                 <Col md={8}>
                     <div className="form">
-                        <Form onSubmit={handleAddPlace}>
+                        <Form onSubmit={handleUpdate}>
 
                             <Row className="mb-3 text-start ">
                 
