@@ -16,7 +16,7 @@ const GetReviews = () => {
         <div className="">
             {reviews.length === 0 ? < div className="spinner"> <Spinner animation="border" className="spinner" />
             </div>
-                : <Row xs={1} md={3} className="w-75 mx-auto">
+                : <Row xs={1} md={4} className="w-75 mx-auto">
                     {
                         reviews.map(review=><GetReview
                         key={review._id}

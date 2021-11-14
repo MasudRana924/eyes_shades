@@ -2,13 +2,14 @@ import React from 'react';
 import { Col } from 'react-bootstrap';
 import Rating from 'react-rating';
 import useAuth from '../../../Hooks/useAuth';
+import './GetReview.css'
 
 const GetReview = (props) => {
     const { user } = useAuth()
     const { name, review, rating } = props.review
     return (
         <Col className="mt-5">
-            <div className="card-style">
+            <div className="review-card-style">
 
                 <img src={user.src} className="image" alt="" />
                 <Rating
