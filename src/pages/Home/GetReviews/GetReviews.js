@@ -8,7 +8,7 @@ const GetReviews = () => {
         fetch('https://fierce-wildwood-12311.herokuapp.com/getreviews')
         .then(res=>res.json())
         .then(data=>{
-            setReviews(data.slice(0,6))
+            setReviews(data.slice(0,8))
         })
     },[])
     return (

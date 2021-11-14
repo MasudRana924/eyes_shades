@@ -33,11 +33,11 @@ const Review = () => {
 
                 
 
-                <Col xs={12} md={8}>
+                <Col xs={12} md={10}>
                     <h2 className=" text-start dashboard" >Review</h2>
                     <Row xs={1} md={2}>
                         <Col>
-                            <div className="review-card ">
+                            <div className="">
                                 <Form onSubmit={handleAddPlace}>
                                     <Form.Group className="mb-3 text-start" >
                                         <Form.Label>Your name</Form.Label>
@@ -46,7 +46,7 @@ const Review = () => {
                                     </Form.Group>
                                     <Form.Group as={Col} className="mb-3 text-start">
                                         <Form.Label>Give Rating</Form.Label>
-                                        <Form.Control ref={ratingRef} type="number" placeholder="Give rating" />
+                                        <Form.Control ref={ratingRef} type="number" placeholder="Give even numbers  rating" />
                                     </Form.Group>
                                     <Form.Group className="mb-3 text-start" controlId="exampleForm.ControlTextarea1">
                                         <Form.Label>Your Feedback</Form.Label>

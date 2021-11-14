@@ -125,7 +125,7 @@ return (
                             <Row className="mb-3 text-start">
                                 <Form.Group as={Col} >
                                     <Form.Label>Price</Form.Label>
-                                    <Form.Control ref={priceRef} type="number" placeholder="Enter price" />
+                                    <Form.Control ref={priceRef} type="number" placeholder="Enter  even numbers price" />
                                 </Form.Group>
 
                                 <Form.Group as={Col} >
@@ -147,7 +147,7 @@ return (
                             <Row className="mb-3 text-start">
                                 <Form.Group as={Col} >
                                     <Form.Label>Rating</Form.Label>
-                                    <Form.Control ref={ratingRef} type="number" placeholder="Give rating" />
+                                    <Form.Control ref={ratingRef} type="number" placeholder="Give  even numbers rating " />
                                 </Form.Group>
                                 <Form.Group as={Col} >
                                     <Form.Label>Description</Form.Label>

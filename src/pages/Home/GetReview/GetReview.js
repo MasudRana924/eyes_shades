@@ -21,7 +21,7 @@ const GetReview = (props) => {
                         readonly ></Rating>
                     <p className="name text-center">{name}</p>
 
-                    <p className=" text-start" style={{ fontSize: '15px' }}>{review}</p>
+                    <p className=" text-start ms-1  me-1" style={{ fontSize: '15px' }}>{review}</p>
                 </div>
             </div>
         </Col>
