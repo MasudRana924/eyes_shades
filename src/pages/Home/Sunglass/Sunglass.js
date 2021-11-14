@@ -14,7 +14,7 @@ const Sunglass = (props) => {
             <div className="card-style">
 
                 
-                    <div className="price-rating">
+                    <div className="stock-sale">
                         <p className="sale">{sale}% off</p>
                         <p className="stock">{stock}</p>
                     </div>

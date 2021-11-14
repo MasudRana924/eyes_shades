@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Col, Container, Row, Table } from 'react-bootstrap';
+import { Col, Container, Row, Table,Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import useAuth from '../../../../Hooks/useAuth';
@@ -58,10 +58,18 @@ const MyOrders = () => {
                                     <tr className="">
                                         <td>{order.info.name}</td>
                                         <td>${order.info.price}</td>
-                                        {
-                                            order.status==='Approved'? <td className="text-success" >{order.status}</td> 
-                                            :<td className="text-danger" >{order.status}</td>
-                                            
+                                      
+                                         {
+                                          order.status==='Approved'? <td>
+                                              <Button variant="success" size="sm">
+                                              {order.status}
+                                              </Button>
+                                          </td> :<td>
+                                          <Button 
+                                            variant="danger" size="sm" >
+                                              {order.status}
+                                                </Button>
+                                          </td>  
                                         }
                                         <td>
                                             <button onClick={() => handleDelete(order._id)}className="delete-button">

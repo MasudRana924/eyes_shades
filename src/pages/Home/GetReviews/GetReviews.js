@@ -12,7 +12,7 @@ const GetReviews = () => {
         })
     },[])
     return (
-        <Container fluid className="mt-3">
+        <Container fluid className="mt-3 pb-3">
         <div className="">
             {reviews.length === 0 ? < div className="spinner"> <Spinner animation="border" className="spinner" />
             </div>

@@ -9,22 +9,20 @@ const GetReview = (props) => {
     const { name, review, rating } = props.review
     return (
         <Col className="mt-5">
-            <div className="review-card-style">
-
-                <img src={user.src} className="image" alt="" />
-                <Rating
-                    initialRating={rating}
-                    emptySymbol="far fa-star rating"
-                    fullSymbol="fas fa-star rating"
-                    readonly ></Rating>
-                <p className="name text-center">{name}</p>
+            <div className="review-card">
+              
+                    <img src={user.src} className="review-image" alt="" />
                 
-                <p className=" text-start" style={{fontSize:'15px'}}>{review}</p>
+                <div>
+                    <Rating
+                        initialRating={rating}
+                        emptySymbol="far fa-star rating"
+                        fullSymbol="fas fa-star rating"
+                        readonly ></Rating>
+                    <p className="name text-center">{name}</p>
 
-
-
-
-
+                    <p className=" text-start" style={{ fontSize: '15px' }}>{review}</p>
+                </div>
             </div>
         </Col>
     );

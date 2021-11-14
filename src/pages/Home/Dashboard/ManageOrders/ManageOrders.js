@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Col, Container, Row, Table } from 'react-bootstrap';
+import { Col, Container, Row, Table,Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
@@ -45,7 +45,6 @@ const ManageOrders = () => {
                 .then(data => {
                     if (data.modifiedCount > 0) {
                         // alert('Orders update successfully ')
-                      
                         alert('Updated Successful')
                         
                     }
@@ -80,12 +79,20 @@ const ManageOrders = () => {
                                         <td>{order.name}</td>
 
                                         <td >${order.email}</td>
-                                        <td>${order.info.name}</td>
+                                        <td>{order.info.name}</td>
                                         <td>${order.info.price}</td>
+                                        
                                         {
-                                            order.status==='Approved'? <td className="text-success" onClick={() => handleUpdate(order._id)} >{order.status}</td> 
-                                            :<td className="text-danger" onClick={() => handleUpdate(order._id)} >{order.status}</td>
-                                            
+                                          order.status==='Approved'? <td>
+                                              <Button onClick={() => handleUpdate(order._id)}variant="success" size="sm">
+                                              {order.status}
+                                              </Button>
+                                          </td> :<td>
+                                          <Button onClick={() => handleUpdate(order._id)}
+                                            variant="danger" size="sm" >
+                                              {order.status}
+                                                </Button>
+                                          </td>  
                                         }
                                         <td>
                                             <button onClick={() => handleDelete(order._id)} className="delete-button">

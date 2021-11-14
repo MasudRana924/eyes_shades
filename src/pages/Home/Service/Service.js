@@ -11,6 +11,7 @@ const Service = () => {
        <Container fluid className="mt-5">
            <Row xs={1} md={3} className="service">
                <Col md={3}>
+                  
                <p>{shipping} FREE SHIPPING</p>
                 
                </Col>
